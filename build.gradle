@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'com.heqing.knife4j'
+version '1.0-SNAPSHOT'
+
+// 指定编译编译.java文件的jdk版本
+sourceCompatibility = 1.8
+// 确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容
+targetCompatibility = 1.8
+// java编译的时候缺省状态下会因为中文字符而失败
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+// 编译JAVA文件时采用UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombok_version = '1.18.12'
+}
+
+dependencies {
+    implementation ('com.github.xiaoymin:knife4j-spring-boot-starter:2.0.8')
+
+    implementation ('com.alibaba:fastjson:1.2.70')
+    compile 'org.projectlombok:lombok'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombok_version
+
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+    testCompile ('org.springframework.boot:spring-boot-starter-test')
+}

@@ -1,0 +1,1 @@
+server:  port: 8080#配置swagger配置knife4j:  basic:    username: heqing    password: hq0556    #开启认证    enable: true  #默认是false ,屏蔽所有Swagger的相关资源  production: false  #是否开启swagger  enable: true
